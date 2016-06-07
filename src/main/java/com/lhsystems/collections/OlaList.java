@@ -20,10 +20,10 @@ public class OlaList<E> implements List<E> {
 		return true;
 	}
 
-	public boolean remove(Object object) {
+	public boolean remove(Object o) {
 		 for(int i = 0; i < elements.length; i++) {
-			 if(elements[i] == object && elements[i].equals(object)) {
-				 
+			 if(elements[i] == o && elements[i].equals(o)) {
+				// 
 			 }
 		 }
 		

@@ -21,12 +21,21 @@ public class OlaList<E> implements List<E> {
 	}
 
 	public boolean remove(Object o) {
-		 for(int i = 0; i < elements.length; i++) {
-			 if(elements[i] == o && elements[i].equals(o)) {
-				// 
-			 }
-		 }
-		
+		for (int i = 0; i < elements.length; i++) {
+			if (elements[i] == o || elements[i].equals(o)) {
+				Object[] newElements = new Object[10];
+				int newIndex = 0;
+				for (int k = 0; k < elements.length; k++) {
+					if (k == i) {
+						newIndex = 1;
+						continue;
+					}
+					newElements[k - newIndex] = elements[k];
+				}
+				lastPosition--;
+				return true;
+			}
+		}
 		return false;
 	}
 

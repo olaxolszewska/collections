@@ -11,4 +11,9 @@ public class App {
 		
 		
 	}
+	
+	
+	public class Lol {
+		
+	}
 }

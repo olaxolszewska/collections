@@ -15,6 +15,13 @@ public class OlaList<E> implements List<E> {
 	}
 
 	public boolean add(E e) {
+		if (lastPosition == elements.length) {
+			Object[] newElements = new Object[elements.length * 2];
+			for (int i = 0; i < elements.length; i++) {
+				newElements[i] = elements[i];
+			}
+			elements = newElements;
+		}
 		elements[lastPosition] = e;
 		lastPosition++;
 		return true;
@@ -23,7 +30,7 @@ public class OlaList<E> implements List<E> {
 	public boolean remove(Object toRemove) {
 		for (int i = 0; i < lastPosition; i++) {
 			if (elements[i] == toRemove || elements[i].equals(toRemove)) {
-				Object[] newElements = new Object[10];
+				Object[] newElements = new Object[elements.length];
 				int newIndex = 0;
 				for (int k = 0; k < lastPosition; k++) {
 					if (k == i) {
@@ -44,7 +51,7 @@ public class OlaList<E> implements List<E> {
 		if (index >= lastPosition) {
 			return null;
 		}
-		
+
 		return (E) elements[index];
 	}
 

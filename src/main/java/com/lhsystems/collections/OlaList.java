@@ -20,18 +20,19 @@ public class OlaList<E> implements List<E> {
 		return true;
 	}
 
-	public boolean remove(Object o) {
-		for (int i = 0; i < elements.length; i++) {
-			if (elements[i] == o || elements[i].equals(o)) {
+	public boolean remove(Object toRemove) {
+		for (int i = 0; i < lastPosition; i++) {
+			if (elements[i] == toRemove || elements[i].equals(toRemove)) {
 				Object[] newElements = new Object[10];
 				int newIndex = 0;
-				for (int k = 0; k < elements.length; k++) {
+				for (int k = 0; k < lastPosition; k++) {
 					if (k == i) {
 						newIndex = 1;
 						continue;
 					}
 					newElements[k - newIndex] = elements[k];
 				}
+				elements = newElements;
 				lastPosition--;
 				return true;
 			}
@@ -40,8 +41,11 @@ public class OlaList<E> implements List<E> {
 	}
 
 	public E get(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if (index >= lastPosition) {
+			return null;
+		}
+		
+		return (E) elements[index];
 	}
 
 }
